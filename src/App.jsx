@@ -1,12 +1,22 @@
-import './App.css'
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Auth from "./pages/Auth";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "react-hot-toast";
+
+const gueryClient = new QueryClient();
 
 function App() {
-
   return (
-    <div>
-      <h1 className='font-bold text-primary-500 opacity-85'>عنوان پروژه</h1>
-    </div>
-  )
+    <QueryClientProvider client={gueryClient}>
+      <Toaster/>
+      <div className="container max-w-screen-xl">
+        <Routes>
+          <Route path="/auth" element={<Auth />} />
+        </Routes>
+      </div>
+    </QueryClientProvider>
+  );
 }
 
-export default App
+export default App;
