@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 function Auth() {
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   const { isPending, mutateAsync, data } = useMutation({
     mutationFn: getOtp,
   });

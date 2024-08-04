@@ -8,8 +8,7 @@ import { HiArrowRight } from "react-icons/hi";
 import { CiEdit } from "react-icons/ci";
 import Loader from "../../ui/Loader";
 
-
-const RESENS_TIME = 10;
+const RESENS_TIME = 90;
 
 function CheckOTPForm({ phoneNumber, onBack, resendCode, otpResponse }) {
   const [otp, setOtp] = useState("");
@@ -30,7 +29,7 @@ function CheckOTPForm({ phoneNumber, onBack, resendCode, otpResponse }) {
   const chechOtpHAndler = async (e) => {
     e.preventDefault();
     try {
-      const { message, user, isPending } = await mutateAsync({
+      const { message, user } = await mutateAsync({
         phoneNumber,
         otp,
       });
@@ -67,22 +66,26 @@ function CheckOTPForm({ phoneNumber, onBack, resendCode, otpResponse }) {
           renderSeparator={<span>-</span>}
           renderInput={(props) => <input {...props} />}
           containerStyle="flex flex-row-reverse gap-x-4 justify-center"
-          inputStyle="border border-primary-400 rounded-md "
+          inputStyle={{
+            width: "2rem",
+            height: "2.3rem",
+            border: "1px solid rgb(var(--color-secondary-300))",
+            borderRadius: "0.5rem",
+          }}
+          // "border border-primary-400 rounded-md "
         />
-        {!isPending ? (
-          <Loader/>
+        {isPending ? (
+          <Loader />
         ) : (
           <button type="submit" className="btn btn--primary w-full">
             تایید
           </button>
         )}
-        <div className="font-bold text-secondary-700">
+        <div className="font-bold text-secondary-700 text-sm">
           {time > 0 ? (
             <p>{time} ثانیه تا ارسال مجدد کد تایید</p>
           ) : (
-            <button onClick={resendCode} className="btn ">
-              ارسال مجدد کد تایید
-            </button>
+            <button onClick={resendCode}>ارسال مجدد کد تایید</button>
           )}
         </div>
       </form>

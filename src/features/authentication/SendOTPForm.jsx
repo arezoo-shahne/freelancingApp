@@ -1,8 +1,4 @@
-import { useState } from "react";
 import InputForm from "../../ui/InputForm";
-import { useMutation } from "@tanstack/react-query";
-import { getOtp } from "../../services/authServices";
-import toast from "react-hot-toast";
 import Loader from "../../ui/Loader";
 
 function SendOTPForm({
