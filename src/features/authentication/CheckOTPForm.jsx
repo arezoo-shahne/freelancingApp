@@ -34,11 +34,16 @@ function CheckOTPForm({ phoneNumber, onBack, resendCode, otpResponse }) {
         otp,
       });
       toast.success(message);
-      if (user.isActive) {
-        //*navigate to profile based on role
-      } else {
-        navigate("/complete-profile");
+      if (!user.isActive) return navigate("/complete-profile");
+      if (user.status !== 2) {
+        navigate("/");
+        toast("پروفایل شما در انتظار تایید است", {
+          icon: "⌛",
+        });
+        return;
       }
+      if (user.role === "OWNER") return navigate("/owner");
+      if (user.role === "FREELANCER") return navigate("/freelancer");
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }

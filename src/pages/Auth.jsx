@@ -48,8 +48,10 @@ function Auth() {
     }
   };
   return (
-    <div className="flex justify-center pt-8">
-      <div className="w-full sm:max-w-md">{swichPages(step)}</div>
+    <div className="container xl:max-w-screen-xl">
+      <div className="flex justify-center pt-8">
+        <div className="w-full sm:max-w-md">{swichPages(step)}</div>
+      </div>
     </div>
   );
 }

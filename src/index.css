@@ -55,13 +55,40 @@
   .inputs {
     @apply p-2 w-full rounded-lg border border-gray-400 hover:border-gray-500 focus:border-primary-800 focus:shadow-md  transition-all duration-200 ease-in;
   }
-  .btn{
-    @apply px-3 py-2 font-bold rounded-xl transition-all duration-300 ease-in hover:shadow-xl
+  .btn {
+    @apply px-3 py-2 font-bold rounded-xl transition-all duration-300 ease-in hover:shadow-xl;
   }
-  .btn--primary{
-    @apply bg-primary-900 hover:bg-primary-800 text-secondary-100
+  .btn--primary {
+    @apply bg-primary-900 hover:bg-primary-800 text-secondary-100;
   }
+  .btn--outline {
+    @apply border border-secondary-700 text-secondary-700;
+  }
+  .btn--danger {
+    @apply border border-rose-700 text-rose-700;
+  }
+  .badge {
+    @apply inline-block whitespace-nowrap rounded-xl px-2 py-0.5;
+  }
+  .badge--primary {
+    @apply bg-primary-900 text-white;
+  }
+  .badge--secondary {
+    @apply bg-secondary-200 text-secondary-600;
+  }
+  .badge--success {
+    @apply bg-green-500 text-white;
+  }
+  .badge--danger {
+    @apply bg-red-500 text-white;
+  }
+ 
+  .badge--info {
+    @apply bg-orange-400 text-white ;
+  }
+
 }
+
 html,
 body {
   margin: 0;
@@ -82,12 +109,44 @@ body {
 label {
   display: block;
 }
-button{
+button {
   cursor: pointer !important;
 }
-button:disabled{
+button:disabled {
   pointer-events: none;
   cursor: default;
   box-shadow: none;
- background-color: rgb(var(--color-secondary-100), 0.5);
+  background-color: rgb(var(--color-secondary-100), 0.5);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table .title-row {
+  background-color: rgb(var(--color-secondary-100));
+}
+
+table td,
+table th {
+  border-bottom: 1px solid rgb(var(--color-secondary-200));
+  text-align: right;
+  white-space: nowrap;
+}
+
+table th {
+  padding: 0.6rem 1rem;
+  color: rgb(var(--color-secondary-600));
+  font-size: 0.9rem;
+}
+
+table td {
+  font-size: 0.85rem;
+  padding: 1rem 1rem;
+  color: rgb(var(--color-secondary-600));
+}
+tbody {
+  background-color: rgb(var(--color-secondary-0));
 }
