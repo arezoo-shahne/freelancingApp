@@ -2,18 +2,16 @@ import InputForm from "../../ui/InputForm";
 import Loader from "../../ui/Loader";
 
 function SendOTPForm({
-  phoneNumber,
-  setPhoneNumber,
-  sendOtpHandler,
+  onSubmit,
   isPending,
+  register
 }) {
   return (
-    <form className="space-y-6" onSubmit={sendOtpHandler}>
+    <form className="space-y-6" onSubmit={onSubmit}>
       <InputForm
-        name={phoneNumber}
+        name={"phoneNumber"}
         label={"شماره موبایل خود را وارد کنید:"}
-        onChange={(e) => setPhoneNumber(e.target.value)}
-        value={phoneNumber}
+        register={register}
       />
       {isPending ? (
         <Loader />

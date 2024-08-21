@@ -1,16 +1,29 @@
-function InputForm({ name, label, onChange, value }) {
+function InputForm({
+  name,
+  label,
+  register,
+  validationSchema,
+  type = "text",
+  required,
+  errors,
+}) {
+  console.log(errors)
   return (
     <div>
       <label htmlFor={name} className="mb-1">
-        {label}
+        {label} {required && <span className="text-error">*</span>}
       </label>
       <input
-        value={value}
-        onChange={onChange}
+        {...register(name, validationSchema)}
         id={name}
-        type="text"
+        type={type}
         className="inputs"
+        autoComplete="off"
+        required={required}
       />
+      {errors && errors[name] && (
+        <span className="text-error block">{errors[name]?.message}</span>
+      )}
     </div>
   );
 }

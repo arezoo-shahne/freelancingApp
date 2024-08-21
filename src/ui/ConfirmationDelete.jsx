@@ -6,18 +6,18 @@ function ConfirmationDelete({ sourceName, onClose, disable, onConfirm }) {
       </h2>
       <div className="flex items-center justify-between gap-x-8 mt-8">
         <button
-          onClick={onClose}
-          disabled={disable}
-          className="btn btn--primary flex-1 "
-        >
-          لغو
-        </button>
-        <button
           onClick={onConfirm}
           disabled={disable}
-          className="btn btn--danger flex-1"
+          className="btn btn--primary flex-1"
         >
           تایید
+        </button>
+        <button
+          onClick={onClose}
+          disabled={disable}
+          className="btn btn--danger flex-1 "
+        >
+          لغو
         </button>
       </div>
     </div>

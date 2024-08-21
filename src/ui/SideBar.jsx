@@ -26,13 +26,13 @@ export default SideBar;
 
 function CustomNavlink({ children, to }) {
   const NavlinkClass =
-    "flex items-center gap-x-2 hover:bg-primary-100/50 px-2 py-1.5 rounded-md";
+    "flex items-center gap-x-2 hover:bg-primary-100/50 px-2 py-1.5 rounded-md transition-all duration-300 ease-out";
   return (
     <NavLink
       to={to}
       className={({ isActive }) =>
         isActive
-          ? `${NavlinkClass} bg-primary-100/50 text-primary-900`
+          ? `${NavlinkClass} bg-primary-100/50 text-primary-900 `
           : `${NavlinkClass} text-secondary-600`
       }
     >

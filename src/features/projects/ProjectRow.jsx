@@ -6,10 +6,13 @@ import { HiOutlineTrash, HiPencilSquare } from "react-icons/hi2";
 import { useState } from "react";
 import Modal from "../../ui/Modal";
 import ConfirmationDelete from "../../ui/ConfirmationDelete";
+import useRemoveOwnerProject from "./useRemoveProject";
+import CreateProject from "./CreateProject";
 
 function ProjectRow({ project, index }) {
   const [openEditModal, setOpenEditModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const { removeProject, isDeleting } = useRemoveOwnerProject();
 
   return (
     <Table.Row key={project._id}>
@@ -50,8 +53,12 @@ function ProjectRow({ project, index }) {
               <ConfirmationDelete
                 onClose={() => setOpenDeleteModal(false)}
                 sourceName={project.title}
-                disable={false}
-                onConfirm={()=>{}}
+                disable={isDeleting}
+                onConfirm={() =>
+                  removeProject(project._id, {
+                    onSuccess: () => setOpenDeleteModal(false),
+                  })
+                }
               />
             </Modal>
           </>
@@ -59,12 +66,11 @@ function ProjectRow({ project, index }) {
             <button onClick={() => setOpenEditModal(true)}>
               <HiPencilSquare className="w-5 h-5 text-primary-800" />
             </button>
-            <Modal
-              open={openEditModal}
-              title="عنوان مدال"
-              onClose={() => setOpenEditModal(false)}
-            >
-              this is modal
+            <Modal open={openEditModal} title={`ویرایش ${project.title}`}>
+              <CreateProject
+                projectToEdit={project}
+                onClose={() => setOpenEditModal(false)}
+              />
             </Modal>
           </>
         </div>
