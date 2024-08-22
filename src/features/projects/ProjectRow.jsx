@@ -2,17 +2,30 @@ import Table from "../../ui/Table";
 import shortenText from "../../utils/shorten text";
 import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
 import toLocalDate from "../../utils/toLocalDate";
-import { HiOutlineTrash, HiPencilSquare } from "react-icons/hi2";
+import { HiEye, HiOutlineTrash, HiPencilSquare } from "react-icons/hi2";
 import { useState } from "react";
 import Modal from "../../ui/Modal";
 import ConfirmationDelete from "../../ui/ConfirmationDelete";
 import useRemoveOwnerProject from "./useRemoveProject";
 import CreateProject from "./CreateProject";
+import Toggle from "../../ui/Toggle";
+import useToggleProjectStatus from "./useToggleStatus";
+import Loader from "../../ui/Loader";
+import { Link } from "react-router-dom";
 
 function ProjectRow({ project, index }) {
   const [openEditModal, setOpenEditModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const { removeProject, isDeleting } = useRemoveOwnerProject();
+  const { isToggling, toggleStatus } = useToggleProjectStatus();
+
+  const handleToggle = () => {
+    const newStatus = project.status === "OPEN" ? "CLOSED" : "OPEN";
+    toggleStatus({
+      id: project._id,
+      data: { status: newStatus },
+    });
+  };
 
   return (
     <Table.Row key={project._id}>
@@ -32,10 +45,14 @@ function ProjectRow({ project, index }) {
       </td>
       <td>{project.freelancer?.name || "-"}</td>
       <td>
-        {project.status === "OPEN" ? (
-          <span className="badge badge--success ">باز</span>
+        {isToggling ? (
+          <Loader />
         ) : (
-          <span className="badge badge--danger">بسته</span>
+          <Toggle
+            enabled={project.status === "OPEN" ? true : false}
+            label={project.status === "OPEN" ? "باز" : "بسته"}
+            onChange={handleToggle}
+          />
         )}
       </td>
       <td>
@@ -74,6 +91,11 @@ function ProjectRow({ project, index }) {
             </Modal>
           </>
         </div>
+      </td>
+      <td>
+        <Link to={project._id} className="flex justify-center items-center">
+          <HiEye className="h-5 w-5 text-primary-900 flex " />
+        </Link>
       </td>
     </Table.Row>
   );

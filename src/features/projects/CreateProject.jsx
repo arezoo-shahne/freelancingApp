@@ -42,7 +42,7 @@ function CreateProject({ onClose, projectToEdit = {} }) {
 
   const { newCategory } = useCategories();
   const { createProject, isPending } = useCreateOwnerProject();
-  const { editProject, isEditing } = useEditOwnerProject();
+  const { editProject } = useEditOwnerProject();
 
   function createProjectHandler(data) {
     const newProject = {
@@ -52,7 +52,7 @@ function CreateProject({ onClose, projectToEdit = {} }) {
     };
     if (isEditMode) {
       editProject(
-        { id:ediId, newProject },
+        { id: ediId, newProject },
         {
           onSuccess: () => {
             onClose();

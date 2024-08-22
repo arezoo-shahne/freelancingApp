@@ -1,13 +1,14 @@
 import toast from "react-hot-toast";
-import { editOwnerProjectApi } from "../../services/projectsServices";
+import { toggleProjectStatusApi } from "../../services/projectsServices";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-export default function useEditOwnerProject() {
+export default function useToggleProjectStatus() {
   const queryClient = useQueryClient();
-  const { isPending: isEditing, mutate: editProject } = useMutation({
-    mutationFn: editOwnerProjectApi,
+  const { isPending: isToggling, mutate: toggleStatus } = useMutation({
+    mutationFn: toggleProjectStatusApi,
     onSuccess: (data) => {
       toast.success(data.message);
+      
       queryClient.invalidateQueries({
         queryKey: ["owner-projects"],
       });
@@ -16,5 +17,5 @@ export default function useEditOwnerProject() {
       toast.error(err?.response?.data?.message);
     },
   });
-  return { editProject, isEditing };
+  return { toggleStatus, isToggling };
 }
