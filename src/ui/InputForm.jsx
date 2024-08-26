@@ -7,7 +7,6 @@ function InputForm({
   required,
   errors,
 }) {
-  console.log(errors)
   return (
     <div>
       <label htmlFor={name} className="mb-1">

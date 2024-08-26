@@ -26,7 +26,6 @@ function ChangeProosalStatus({ proposalId, onClose }) {
   const { id: projectId } = useParams();
 
   const changeStatusHandler = (data) => {
-    console.log(data);
     changeStatus(
       { id: proposalId, data },
       {

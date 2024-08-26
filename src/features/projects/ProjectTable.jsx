@@ -7,7 +7,6 @@ import ProjectHeader from "./ProjectHeader";
 
 function ProjectTable() {
   const { isLoading, projects } = useOwnerProjects();
-  console.log(projects);
 
   if (isLoading) return <Loader />;
   if (!projects.length) return <Empty title={"پروژه"} />;
