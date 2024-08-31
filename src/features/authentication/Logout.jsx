@@ -9,7 +9,7 @@ function Logout() {
     <Loader />
   ) : (
     <button onClick={logout}>
-      <HiArrowLeftEndOnRectangle className="h-6 w-6 text-secondary-600 hover:text-error hover:!cursor-pointer" />
+      <HiArrowLeftEndOnRectangle className="h-4 w-4 md:h-6 md:w-6 text-secondary-600 hover:text-error hover:!cursor-pointer" />
     </button>
   );
 }

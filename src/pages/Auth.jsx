@@ -5,8 +5,8 @@ import { useMutation } from "@tanstack/react-query";
 import { getOtp } from "../services/authServices";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import useAllUsers from "../hooks/useAllUsers";
 import { useNavigate } from "react-router-dom";
+import useUser from "../features/authentication/useUser";
 
 function Auth() {
   const { register, handleSubmit, getValues } = useForm();
@@ -15,13 +15,14 @@ function Auth() {
     mutationFn: getOtp,
   });
   const navigate = useNavigate();
-  const { users } = useAllUsers();
+  const { user } = useUser();
 
   useEffect(() => {
-    if (users) return navigate("/", { replace: true });
-  }, [users, navigate]);
+    if (user) return navigate("/", { replace: true });
+  }, [user, navigate]);
 
   const sendOtpHandler = async (data) => {
+    console.log(data)
     try {
       const { message } = await mutateAsync(data);
       toast.success(message);
@@ -47,7 +48,7 @@ function Auth() {
             otpResponse={data}
             phoneNumber={getValues("phoneNumber")}
             onBack={() => setStep((s) => s - 1)}
-            resendCode={sendOtpHandler}
+            // resendCode={sendOtpHandler}
           />
         );
       default:

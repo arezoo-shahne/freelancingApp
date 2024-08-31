@@ -30,9 +30,9 @@ function ProjectsHeader() {
     },
   ];
   return (
-    <div className="flex justify-between items-center text-secondary-600 mb-8">
+    <div className="flex flex-col md:flex-row justify-between items-center text-secondary-600 mb-8">
       <h1 className="font-bold text-base ">فهرست پروژه‌ها</h1>
-      <div className="flex items-center justify-between gap-x-4">
+      <div className="flex flex-col gap-y-4 mt-4 md:flex-row items-center justify-between md:gap-x-4">
         <Filter options={statusValue} filterValue="status" />
         <DropDownFilter options={sortValues} filterValue="sort" />
         <DropDownFilter
