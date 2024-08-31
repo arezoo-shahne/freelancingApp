@@ -9,7 +9,9 @@ export const checkOtp = (data) => {
 };
 
 export const completeProfile = (data) => {
-  return http.post("/user/complete-profile",data).then(({ data }) => data.data);
+  return http
+    .post("/user/complete-profile", data)
+    .then(({ data }) => data.data);
 };
 
 export const getUsers = () => {
@@ -18,4 +20,14 @@ export const getUsers = () => {
 
 export const logoutApi = () => {
   return http.post("/user/logout").then(({ data }) => data.data);
+};
+
+export const getAllUsersApi = () => {
+  return http.get("/admin/user/list").then(({ data }) => data.data);
+};
+
+export const changeUserStatusApi = ({ userId, data }) => {
+  return http
+    .patch(`/admin/user/verify/${userId}`, data)
+    .then(({ data }) => data.data);
 };

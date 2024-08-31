@@ -44,6 +44,7 @@ function CheckOTPForm({ phoneNumber, onBack, resendCode, otpResponse }) {
       }
       if (user.role === "OWNER") return navigate("/owner");
       if (user.role === "FREELANCER") return navigate("/freelancer");
+      if(user.role==="ADMIN") return navigate("/admin")
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
@@ -55,7 +56,7 @@ function CheckOTPForm({ phoneNumber, onBack, resendCode, otpResponse }) {
       </button>
       <div>
         {otpResponse && (
-          <p className="flex items-center">
+          <p className="flex items-center mt-6 text-secondary-700">
             <span>{otpResponse.message}</span>
             <button onClick={onBack}>
               <CiEdit className="h-6 w-6 text-primary-600 mr-1" />
@@ -68,7 +69,7 @@ function CheckOTPForm({ phoneNumber, onBack, resendCode, otpResponse }) {
           value={otp}
           onChange={setOtp}
           numInputs={6}
-          renderSeparator={<span>-</span>}
+          renderSeparator={<span className="text-secondary-700">-</span>}
           renderInput={(props) => <input {...props} />}
           containerStyle="flex flex-row-reverse gap-x-4 justify-center"
           inputStyle={{

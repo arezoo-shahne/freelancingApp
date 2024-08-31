@@ -2,7 +2,7 @@ import { ThreeDots } from "react-loader-spinner";
 
 function Loading({ width = "45", height = "20" }) {
   return (
-    <ThreeDots
+    <ThreeDots  
       height={height}
       width={width}
       radius={9}

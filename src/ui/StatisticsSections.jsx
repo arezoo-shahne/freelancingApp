@@ -1,3 +1,5 @@
+import { toPersianNumbers } from "../utils/toPersianNumbers";
+
 function StatisticsSections({ icon, title, value }) {
   return (
     <div>
@@ -6,7 +8,9 @@ function StatisticsSections({ icon, title, value }) {
           {icon}
         </div>
         <h5 className="font-bold text-secondary-500 self-center">{title}</h5>
-        <p className="font-bold text-secondary-700 text-xl">{value}</p>
+        <p className="font-bold text-secondary-700 text-xl">
+          {toPersianNumbers(value)}
+        </p>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ function Headermenu() {
       <ul className="flex justify-center items-center gap-x-4">
         <li className="flex">
           <Link to={"dashboard"}>
-            <HiOutlineUser className="h-5 w-5 text-secondary-600 hover:text-primary-900 hover:!cursor-pointer" />
+            <HiOutlineUser className="h-6 w-6 text-secondary-600 hover:text-primary-900 hover:!cursor-pointer" />
           </Link>
         </li>
         <li className="flex">

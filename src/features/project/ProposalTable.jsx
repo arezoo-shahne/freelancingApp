@@ -11,8 +11,8 @@ function ProposalTable({ proposals }) {
           <th>#</th>
           <th>فریلنسر</th>
           <th>توضیحات</th>
-          <th>زمان تحویل</th>
-          <th>مبلغ پیشنهادی</th>
+          <th>زمان تحویل(روز)</th>
+          <th>مبلغ پیشنهادی(ریال)</th>
           <th>وضعیت</th>
           <th>عملیات</th>
         </Table.Header>

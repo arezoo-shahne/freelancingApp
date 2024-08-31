@@ -20,6 +20,7 @@ function ProjectRow({ project, index }) {
   const { isToggling, toggleStatus } = useToggleProjectStatus();
 
   const handleToggle = () => {
+    console.log(project)
     const newStatus = project.status === "OPEN" ? "CLOSED" : "OPEN";
     toggleStatus({
       id: project._id,

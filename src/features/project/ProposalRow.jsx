@@ -2,6 +2,11 @@ import { useState } from "react";
 import Modal from "../../ui/Modal";
 import Table from "../../ui/Table";
 import ChangeProosalStatus from "./ChangeProosalStatus";
+import shortenText from "../../utils/shorten text";
+import {
+  toPersianNumbers,
+  toPersianNumbersWithComma,
+} from "../../utils/toPersianNumbers";
 
 function ProposalRow({ proposals, index }) {
   const { status } = proposals;
@@ -25,9 +30,9 @@ function ProposalRow({ proposals, index }) {
     <Table.Row>
       <td>{index + 1}</td>
       <td>{proposals.user.name}</td>
-      <td>{proposals.description}</td>
-      <td>{proposals.duration}</td>
-      <td>{proposals.price}</td>
+      <td>{shortenText(proposals.description, 60)}</td>
+      <td>{toPersianNumbers(proposals.duration)}</td>
+      <td>{toPersianNumbersWithComma(proposals.price)}</td>
       <td>
         <span className={`badge ${statusStyle[status].className}`}>
           {statusStyle[status].label}
